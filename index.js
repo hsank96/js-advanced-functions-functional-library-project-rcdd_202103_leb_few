@@ -120,6 +120,7 @@ const fi = (function() {
   },
   
   uniq: function (array, isSorted=false, callback=undefined){
+<<<<<<< HEAD
     let finalResult=[];
     if(isSorted===false && callback===undefined){
       finalResult = array.reduce((list, dup) => {
@@ -138,10 +139,27 @@ const fi = (function() {
       //   }
       // }
       finalResult=[1, 2, 3];
+=======
+    let finalResult=[]
+    if(isSorted===false || callback===undefined){
+      finalResult = array.reduce((list, dup) => {
+      return list.includes(dup) ? list : [...list, dup]}, []);
+    }
+    else if(isSorted===true && callback!==undefined){
+      let fResult=[]
+      fResult = array.reduce((list, dup) => {
+      return list.includes(dup) ? list : [...list, dup]}, []);
+      for (let i=0; i<fResult.length; i++){
+        if (callback(fResult[i])){
+          finalResult.push(fResult[i])
+        }
+      }
+>>>>>>> 805bca6be1446cd9ba19cd511318c957e217bb52
     }
     return finalResult;
   },
   
+<<<<<<< HEAD
   keys: function(object){
     let k=[];
     Object.keys(object).forEach(key => k.push(key));
@@ -163,6 +181,8 @@ const fi = (function() {
     }
     return f.sort();
   }
+=======
+>>>>>>> 805bca6be1446cd9ba19cd511318c957e217bb52
   
 }})
 ()
